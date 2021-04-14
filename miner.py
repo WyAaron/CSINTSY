@@ -7,10 +7,34 @@ class Entity:
 #class for Alien
 class Alien(Entity): 
     pass
+    #default facing of the alien is east 
+    front[self.X+1][self.Y] =  
+    fctr = 0; 
+    def rotate(self): 
         
+        # face south
+        if fctr ==0: 
+            front[self.X][self.Y+1]
+            print("the alien is facing south: ({},{})".format(self.X,self.Y))
+            return fctr == 1
+        # face west 
+        elif fctr ==1:
+            front[self.X-1][self.Y]
+            return fctr == 2
+        # face north
+        elif fctr == 2:
+            front[self][self.Y-1]
+            return fctr == 3
+        # face east 
+        elif fctr ==3: 
+            front[self.X][self.Y-1]
+            return fctr ==0
+
+        pass
+
     def move_random(self):
         value = random.randint(1,2)
-        print("Before Self-X: " , self.X,"Before Self-Y: " , self.Y)
+        #print("Before Self-X: " , self.X,"Before Self-Y: " , self.Y)
         if self.X == (sizeofN-1) and self.Y == (sizeofN-1):
             self.X = 0 
             self.Y = 0
@@ -33,12 +57,13 @@ class Alien(Entity):
                 print("Self-X: " , self.X,"Self-Y: " , self.Y)
                 return self.Y
             return self.Y
-        
-        
-        
-    
 
-    
+    def scan(self):
+        pass
+
+
+
+ 
 #class creation for Pit
 class Pit(Entity): 
     def __init__(self,X,Y):
@@ -135,7 +160,7 @@ while True:
         
         # alien.X, alien.Y = AX,AY
     alien.move_random(); 
-
+    alien.rotate(); 
 
     print(grid.check())
     if grid.check() == 0:
